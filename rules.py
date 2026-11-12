@@ -41,6 +41,17 @@ def 조치기한(접수일, 긴급도: str) -> date:
     return _날짜(접수일) + timedelta(days=조치기한_일수[긴급도])
 
 
+# ---------- 하자대장 읽기·저장 (저장소는 db.py) ----------
+def 대장_읽기() -> list[dict]:
+    import db
+    return db.대장_읽기()
+
+
+def 대장_저장(행들: list[dict]) -> int:
+    import db
+    return db.대장_저장(행들)
+
+
 # ---------- 공사정보 ----------
 def 공사정보_읽기(경로: Path = 공사정보_경로) -> list[dict]:
     for 인코딩 in ("utf-8-sig", "cp949"):
